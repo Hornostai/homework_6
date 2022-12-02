@@ -106,16 +106,23 @@ def sorter(folder):
 
 
 #видаляє папки
-
-"""розпаковку архівів за допомогою shutil.unpack_archive()"""
-
 def remove_folders():
     folders = sorted(Path('.').glob('*'))
     for i in FOLDERS:
         if FOLDERS == "_":
             return folders, FOLDERS.delete
 
-
+#перевіряє чи є другий параметр
+def paramether(first_argument, second_argument):
+    while first_argument == True and second_argument == True:
+        return paramether
+    
+    try:
+        first_argument == True and second_argument == False
+    except TypeError:
+        return "We do not finde yout paramether"
+        
+#розпаковку архівів за допомогою shutil.unpack_archive()
 def delete_folder(folder: str):
     folder = "C:/Users/Anwender/Desktop/so_much/resume.zip"
     extract_dir = "C:/Users/Anwender/Desktop/so_much"
@@ -123,7 +130,7 @@ def delete_folder(folder: str):
     shutil.unpack_archive(folder[ extract_dir[ format]])
     unpack_archive("resume.zip", './sample', "zip")
 
-""" Функція file_parser() - це головна функція."""
+#Функція file_parser() - це головна функція."""
 def file_parser(folder_for_scan):
 
     try:
