@@ -1,6 +1,10 @@
 import os
+import shutil
+import re
+import sys
 from pathlib import Path
 import pathlib
+from shutil import unpack_archive
 
 #отримання списку файлів
 def get_file_list(folder):
@@ -69,8 +73,6 @@ FOLDERS = []
 EXTENTIONS = set()
 UNKNOWN = set()
 
-from pathlib import Path
-import re
 
 CYRILLIC_SYMBOLS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяєіїґ"
 TRANSLATION = ("a", "b", "v", "g", "d", "e", "e", "j", "z", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u",
@@ -89,7 +91,6 @@ def get_extention(filename:str)-> str:
     return Path(filename).suffix[:1].upper()
 
 #сортує папки
-import os
 
 def sorter(folder):
     file_list = get_file_list(folder)
@@ -108,30 +109,32 @@ def sorter(folder):
 
 """розпаковку архівів за допомогою shutil.unpack_archive()"""
 
-import shutil
 def remove_folders():
+    folders = sorted(Path('.').glob('*'))
+    return folders
+
+def delete_folder(folder: str):
     folder = "C:/Users/Anwender/Desktop/so_much/resume.zip"
     extract_dir = "C:/Users/Anwender/Desktop/so_much"
-    archive_format = "zip"
-    shutil.unpack_archive(folder, extract_dir, archive_format)
-    return extract_dir
+    format = "zip"
+    shutil.unpack_archive(folder[ extract_dir[ format]])
+    unpack_archive("resume.zip", './sample', "zip")
 
 #def delete_folder():
 #    for i in FOLDERS:
-#        if FOLDERS : "_"
-#        return FOLDERS.delete
+ #       if FOLDERS : "_"
+  #      return FOLDERS.delete
 
-def remove_folders(folder: str):
-    folders = FOLDERS.glob("*")
-    for f in folders:
-        try:
-            os.rmdir(f)
-        except Exception as err:
-            print(f"{err}")
+#def remove_folders(folder: str):
+#    folders = FOLDERS.glob("*")
+ #   for f in folders:
+  #      try:
+   #         os.rmdir(f)
+    #    except Exception as err:
+     #       print(f"{err}")
+
 
 """ Функція file_parser() - це головна функція."""
-import sys
-from pathlib import Path
 def file_parser(folder_for_scan):
 
     try:
