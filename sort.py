@@ -111,7 +111,10 @@ def sorter(folder):
 
 def remove_folders():
     folders = sorted(Path('.').glob('*'))
-    return folders
+    for i in FOLDERS:
+        if FOLDERS == "_":
+            return folders, FOLDERS.delete
+
 
 def delete_folder(folder: str):
     folder = "C:/Users/Anwender/Desktop/so_much/resume.zip"
@@ -119,20 +122,6 @@ def delete_folder(folder: str):
     format = "zip"
     shutil.unpack_archive(folder[ extract_dir[ format]])
     unpack_archive("resume.zip", './sample', "zip")
-
-#def delete_folder():
-#    for i in FOLDERS:
- #       if FOLDERS : "_"
-  #      return FOLDERS.delete
-
-#def remove_folders(folder: str):
-#    folders = FOLDERS.glob("*")
- #   for f in folders:
-  #      try:
-   #         os.rmdir(f)
-    #    except Exception as err:
-     #       print(f"{err}")
-
 
 """ Функція file_parser() - це головна функція."""
 def file_parser(folder_for_scan):
